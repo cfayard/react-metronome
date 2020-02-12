@@ -4,7 +4,7 @@ import './Metronome.css';
 import click1 from './click1.wav';
 import click2 from './click2.wav';
 
-class Metronome extends Component {
+class Metronome extends React.Component {
     constructor(props) {
         super(props);
         
@@ -23,6 +23,11 @@ class Metronome extends Component {
         this.setState({ bpm });
       }
 
+    startStop = () => {
+        this.click1.play();
+    }
+
+
   render() {
   const {playing, bpm} = this.state;
 
@@ -37,7 +42,9 @@ class Metronome extends Component {
             value={bpm} 
             onChange={this.handleBpmChange}  />
         </div>
-        <button>{playing ? 'Stop' : 'Start'}</button>
+        <button onClick={this.startStop}>
+            {playing ? 'Stop' : 'Start'}
+        </button>
       </div>
     );
   }
